@@ -1,9 +1,16 @@
+import os
+from dotenv import load_dotenv
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from google import genai
 
-client = genai.Client(api_key="AIzaSyCwa0jrDVbOUS4g2v36vU0cXNo8cWoxLuc")
+load_dotenv()
+
+api_key = os.getenv("API_KEY")
+
+client = genai.Client(api_key=api_key)
 
 app = FastAPI()
 
@@ -24,7 +31,7 @@ def analyze(user_input: UserInput):
     try:
 
         response = client.models.generate_content(
-            model="gemini-3-flash-preview",
+            model="gemini-2.0-flash",
             contents=f"""
             You are a cybersecurity educational assistant.
 
