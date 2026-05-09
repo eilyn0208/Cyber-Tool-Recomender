@@ -31,7 +31,7 @@ def analyze(user_input: UserInput):
     try:
 
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-3-flash-preview",
             contents=f"""
             You are a cybersecurity educational assistant.
 
